@@ -9,6 +9,7 @@ import com.sorting.factory.NumbersFactory;
 import com.sorting.factory.QuickSort;
 import com.sorting.factory.SelectionSort;
 import com.sorting.factory.Sorting;
+import com.sorting.factory.SortingFactory;
 
 public class SortingAction extends ActionSupport {
 	private String tempat;
@@ -43,18 +44,19 @@ public class SortingAction extends ActionSupport {
 	{
 		long startTime = System.nanoTime();  
 		Sorting sorting;
+		SortingFactory sortingFactory = new SortingFactory();
 		if(tipeSorting == 1)
-			sorting = new BubbleSort();
+			sorting = sortingFactory.getSorting("bubblesort");
 		else if(tipeSorting == 2)
-			sorting = new InsertionSort();
+			sorting = sortingFactory.getSorting("insertionsort");
 		else if(tipeSorting == 3)
-			sorting = new QuickSort();
+			sorting = sortingFactory.getSorting("quicksort");
 		else if(tipeSorting == 4)
-			sorting = new SelectionSort();
+			sorting = sortingFactory.getSorting("selectionsort");
 		else 
 			return "error";
 		
-		sorting.setNumbers(new NumbersFactory().getRandomNumbers(tempat));
+		sorting.setNumbers(NumbersFactory.getRandomNumbers(tempat));
 		sorting.sort();
 		
 		time = System.nanoTime() - startTime;

@@ -2,7 +2,7 @@ package com.sorting.factory;
 
 public class NumbersFactory {
 
-	public int[] getRandomNumbers(String tempat)
+	public static int[] getRandomNumbers(String tempat)
 	{
 		if(tempat.equalsIgnoreCase("ribuan"))
 		{
@@ -28,7 +28,7 @@ public class NumbersFactory {
 			return null;
 	}
 	
-	private int[] randomWithRange(int min, int max)
+	public static int[] randomWithRange(int min, int max)
 	{
 		int[] randomNumbers = randomNumbers = new int[max];
 		int range = (max - min) + 1;     
